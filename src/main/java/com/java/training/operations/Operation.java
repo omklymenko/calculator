@@ -1,6 +1,6 @@
-package com.java.training;
+package com.java.training.operations;
 
-interface Operation {
+public interface Operation {
 
     Integer operate(Integer firstInteger, Integer secondInteger);
 }

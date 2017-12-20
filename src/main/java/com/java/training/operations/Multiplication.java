@@ -1,4 +1,4 @@
-package com.java.training;
+package com.java.training.operations;
 
 class Multiplication implements Operation {
 
