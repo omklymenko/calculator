@@ -1,6 +1,8 @@
 package com.java.training.operations;
 
-class Subtraction implements Operation {
+import com.java.training.interfaces.Operation;
+
+public class Subtraction implements Operation {
 
     public Integer operate(Integer firstInteger, Integer secondInteger) {
         return firstInteger - secondInteger;

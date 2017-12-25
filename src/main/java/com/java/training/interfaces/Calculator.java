@@ -1,4 +1,4 @@
-package com.java.training.calculators;
+package com.java.training.interfaces;
 
 import com.java.training.enums.OperationType;
 

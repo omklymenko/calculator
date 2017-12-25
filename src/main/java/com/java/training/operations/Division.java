@@ -1,6 +1,7 @@
 package com.java.training.operations;
 
 import com.java.training.exceptions.DivideByZeroException;
+import com.java.training.interfaces.Operation;
 
 class Division implements Operation {
 

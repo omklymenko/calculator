@@ -1,4 +1,4 @@
-package com.java.training.operations;
+package com.java.training.interfaces;
 
 public interface Operation {
 

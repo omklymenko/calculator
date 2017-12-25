@@ -1,11 +1,13 @@
 package com.java.training.operations;
 
 import com.java.training.enums.OperationType;
+import com.java.training.interfaces.Operation;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.java.training.enums.ErrorMessage.NOT_SUPPORTED_OPERATION_ERROR;
 import static com.java.training.enums.OperationType.*;
 
 @Component
@@ -20,6 +22,8 @@ public class OperationFactory {
     }
 
     public Operation getOperation(OperationType operationType){
-        return map.get(operationType);
+        if(!map.containsKey(operationType)){
+            throw new IllegalArgumentException(NOT_SUPPORTED_OPERATION_ERROR.getMessage());
+        } else return map.get(operationType);
     }
 }
