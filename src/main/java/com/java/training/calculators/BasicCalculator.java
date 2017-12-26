@@ -19,6 +19,8 @@ public class BasicCalculator implements Calculator {
         if(firstInteger != null && secondInteger != null) {
             Operation operation = operationFactory.getOperation(operationType);
             return operation.operate(firstInteger, secondInteger);
-        } else throw new IllegalArgumentException(NOT_A_NUMBER_ERROR.getMessage());
+        } else {
+            throw new IllegalArgumentException(NOT_A_NUMBER_ERROR.getMessage());
+        }
     }
 }

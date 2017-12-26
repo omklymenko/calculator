@@ -22,8 +22,10 @@ public class OperationFactory {
     }
 
     public Operation getOperation(OperationType operationType){
-        if(!map.containsKey(operationType)){
+        if(map.containsKey(operationType)){
+            return map.get(operationType);
+        } else {
             throw new IllegalArgumentException(NOT_SUPPORTED_OPERATION_ERROR.getMessage());
-        } else return map.get(operationType);
+        }
     }
 }

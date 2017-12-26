@@ -1,12 +1,12 @@
-package additional.small.tasks;
+package tasks;
 
 public class SumOfDigits {
 
     private static int calculateSumOfDigits(Integer number){
         int result = 0;
         while(number > 0){
-            result += number%10;
-            number = number/10;
+            result += number % 10;
+            number = number / 10;
         }
         return result;
     }

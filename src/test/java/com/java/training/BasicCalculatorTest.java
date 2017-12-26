@@ -11,7 +11,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static com.java.training.enums.ErrorMessage.DIVIDE_BY_ZERO_ERROR;
 import static com.java.training.enums.ErrorMessage.NOT_A_NUMBER_ERROR;
-import static com.java.training.enums.ErrorMessage.NOT_SUPPORTED_OPERATION_ERROR;
 import static com.java.training.enums.OperationType.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -85,24 +84,6 @@ public class BasicCalculatorTest {
             calculator.calculate(DIVIDE, secondParam, secondParam);
         } catch (DivideByZeroException exception){
             Assert.assertEquals("Error message is not as expected", DIVIDE_BY_ZERO_ERROR.getMessage(), exception.getMessage());
-        }
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testUnexpectedOperation(){
-        Integer firstParam = 12;
-        Integer secondParam = 10;
-        calculator.calculate(null, firstParam, secondParam);
-    }
-
-    @Test
-    public void testUnexpectedOperationMessage(){
-        Integer firstParam = 12;
-        Integer secondParam = 10;
-        try {
-            calculator.calculate(null, firstParam, secondParam);
-        } catch (IllegalArgumentException exception){
-            Assert.assertEquals("Error message is not as expected", NOT_SUPPORTED_OPERATION_ERROR.getMessage(), exception.getMessage());
         }
     }
 
