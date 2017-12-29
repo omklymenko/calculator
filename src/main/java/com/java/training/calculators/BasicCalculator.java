@@ -3,6 +3,7 @@ package com.java.training.calculators;
 import com.java.training.enums.OperationType;
 import com.java.training.interfaces.Calculator;
 import com.java.training.interfaces.Operation;
+import com.java.training.models.Expression;
 import com.java.training.operations.OperationFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,5 +23,9 @@ public class BasicCalculator implements Calculator {
         } else {
             throw new IllegalArgumentException(NOT_A_NUMBER_ERROR.getMessage());
         }
+    }
+
+    public Integer calculate(Expression expression) {
+        return calculate(expression.getOperationType(), expression.getFirstInput(), expression.getSecondInput());
     }
 }
