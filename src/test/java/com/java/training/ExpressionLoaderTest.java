@@ -1,6 +1,6 @@
 package com.java.training;
 
-import com.java.training.interfaces.MathExpressionsFileReader;
+import com.java.training.models.MathExpression;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,15 +12,14 @@ import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/applicationContext.xml" })
-public class FileReaderTest {
+public class ExpressionLoaderTest {
 
     @Autowired
-    MathExpressionsFileReader fileReader;
+    ExpressionLoader expressionLoader;
 
     @Test
-    public void testReadFile(){
-        List<String> lines = fileReader.readFile("C:\\Users\\elena\\workspace\\calculator\\src\\main\\resources\\testfile.txt");
-        Assert.assertFalse("List of math expressions is empty", lines.isEmpty());
+    public void testLoadExpression() {
+        List<MathExpression> mathExpression = expressionLoader.loadExpressions("C:\\Users\\elena\\workspace\\calculator\\src\\main\\resources\\testfile.txt");
+        Assert.assertFalse("List is empty", mathExpression.isEmpty());
     }
-
 }
