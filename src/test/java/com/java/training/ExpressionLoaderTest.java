@@ -19,7 +19,7 @@ public class ExpressionLoaderTest {
 
     @Test
     public void testLoadExpression() {
-        List<MathExpression> mathExpression = expressionLoader.loadExpressions("C:\\Users\\elena\\workspace\\calculator\\src\\main\\resources\\testfile.txt");
+        List<MathExpression> mathExpression = expressionLoader.loadExpressions("src/main/resources/testfile.txt");
         Assert.assertFalse("List is empty", mathExpression.isEmpty());
     }
 }

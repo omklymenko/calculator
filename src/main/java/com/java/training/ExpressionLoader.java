@@ -19,7 +19,7 @@ public class ExpressionLoader {
 
     public List<MathExpression> loadExpressions(String path) {
         List<MathExpression> mathExpressions = new ArrayList<>();
-        Pattern pattern = Pattern.compile("((\\d+)|([\\+\\-\\*/])(\\d+))");
+        Pattern pattern = Pattern.compile("(\\d+)|([\\+\\-\\*/])");
         List<String> expressions = reader.readFile(path);
         for (String expression : expressions){
             Matcher m = pattern.matcher(expression);

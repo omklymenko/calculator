@@ -19,7 +19,7 @@ public class FileReaderTest {
 
     @Test
     public void testReadFile(){
-        List<String> lines = fileReader.readFile("C:\\Users\\elena\\workspace\\calculator\\src\\main\\resources\\testfile.txt");
+        List<String> lines = fileReader.readFile("src/main/resources/testfile.txt");
         Assert.assertFalse("List of math expressions is empty", lines.isEmpty());
     }
 
