@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -19,22 +20,24 @@ public class ExpressionLoader {
 
     public List<MathExpression> loadExpressions(String path) {
         List<MathExpression> mathExpressions = new ArrayList<>();
-        Pattern pattern = Pattern.compile("(\\d+)|([\\+\\-\\*/])");
-        List<String> expressions = reader.readFile(path);
+        Pattern pattern = Pattern.compile("(-?\\d+)([\\+\\-\\*/])(-?\\d+)");
+        List<String> lines = reader.readFile(path);
+        List<String> expressions = new ArrayList<>();
+        for(String line : lines){
+            String editedLine = line.replaceAll("[A-Za-z]", " ").replaceAll(" +", " ");
+            expressions.addAll(Arrays.asList(editedLine.split(" ")));
+        }
         for (String expression : expressions){
             Matcher m = pattern.matcher(expression);
-            List<String> symbols = new ArrayList<>();
             MathExpression mathExpression = new MathExpression();
-            if (expression.matches("((\\d+)([\\+\\-\\*/])(\\d+))")) {
+            if (expression.matches("(?!=[\\+\\-\\*/])(-?)(\\d+)([\\+\\-\\*/])(?!=[\\+\\-\\*/])(-?)(\\d+)")) {
                 while (m.find()) {
-                    symbols.add(m.group());
-                    System.out.println(m.group());
+                    mathExpression.setFirstParam(Integer.valueOf(m.group(1)));
+                    mathExpression.setSecondParam(Integer.valueOf(m.group(3)));
+                    mathExpression.setOperationType(OperationType.getOperationType(m.group(2)));
+                    mathExpressions.add(mathExpression);
                 }
-                mathExpression.setFirstParam(Integer.valueOf(symbols.get(0)));
-                mathExpression.setSecondParam(Integer.valueOf(symbols.get(2)));
-                mathExpression.setOperationType(OperationType.getOperationType(symbols.get(1)));
-                }
-            mathExpressions.add(mathExpression);
+            }
         }
         return mathExpressions;
     }

@@ -14,7 +14,7 @@ public class TxtFileReader implements MathExpressionsFileReader {
 
     public List<String> readFile(String path) {
 
-        List<String> expressions = new ArrayList<>();
+        List<String> lines = new ArrayList<>();
 
         File f = new File(path);
 
@@ -23,7 +23,7 @@ public class TxtFileReader implements MathExpressionsFileReader {
             String readLine = "";
 
             while ((readLine = b.readLine()) != null) {
-                expressions.add(readLine);
+                lines.add(readLine);
                 System.out.println(readLine);
             }
 
@@ -31,6 +31,6 @@ public class TxtFileReader implements MathExpressionsFileReader {
             System.out.println(e.getMessage());
         }
 
-        return expressions;
+        return lines;
     }
 }
