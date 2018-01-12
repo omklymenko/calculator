@@ -1,5 +1,6 @@
 package com.java.training.readers;
 
+import com.java.training.exceptions.FileLoaderException;
 import com.java.training.interfaces.MathExpressionsFileReader;
 import org.springframework.stereotype.Component;
 
@@ -28,7 +29,7 @@ public class TxtFileReader implements MathExpressionsFileReader {
             }
 
         } catch (Exception e){
-            System.out.println(e.getMessage());
+            throw new FileLoaderException();
         }
 
         return lines;

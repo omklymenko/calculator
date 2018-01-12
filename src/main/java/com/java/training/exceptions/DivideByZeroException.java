@@ -1,8 +1,10 @@
 package com.java.training.exceptions;
 
+import static com.java.training.enums.ErrorMessage.DIVIDE_BY_ZERO_ERROR;
+
 public class DivideByZeroException extends RuntimeException {
 
     public DivideByZeroException() {
-        super("0 is not acceptable as the second parameter for division");
+        super(DIVIDE_BY_ZERO_ERROR.getMessage());
     }
 }
