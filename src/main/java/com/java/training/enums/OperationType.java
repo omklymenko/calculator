@@ -27,4 +27,21 @@ public enum OperationType {
             throw new IllegalArgumentException(NOT_SUPPORTED_OPERATION_ERROR.getMessage());
         }
     }
+
+    public static String getKeyFromValue(OperationType operationType) {
+        for (String key : operationTypeMap.keySet()) {
+            if (operationTypeMap.get(key).equals(operationType)) {
+                return key;
+            }
+        }
+        return null;
+    }
+
+    public static String getSign(OperationType operationType) {
+        if(operationTypeMap.containsValue(operationType)){
+            return getKeyFromValue(operationType);
+        } else {
+            throw new IllegalArgumentException(NOT_SUPPORTED_OPERATION_ERROR.getMessage());
+        }
+    }
 }

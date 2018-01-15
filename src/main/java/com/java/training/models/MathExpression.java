@@ -41,4 +41,9 @@ public class MathExpression {
         this.secondParam = secondParam;
     }
 
+    @Override
+    public String toString() {
+        return firstParam.toString() + OperationType.getSign(operationType) + secondParam.toString();
+    }
+
 }
