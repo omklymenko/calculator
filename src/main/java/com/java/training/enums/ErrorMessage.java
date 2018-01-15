@@ -3,6 +3,7 @@ package com.java.training.enums;
 public enum ErrorMessage {
     DIVIDE_BY_ZERO_ERROR ("0 is not acceptable as the second parameter for division"),
     FILE_LOADER_ERROR ("Error while opening file with expressions. Please, check if file exists."),
+    FILE_CREATION_ERROR ("Error while creating file."),
     NOT_SUPPORTED_OPERATION_ERROR("This operation is not supported by Calculator"),
     NOT_A_NUMBER_ERROR ("Only integer is acceptable");
 
