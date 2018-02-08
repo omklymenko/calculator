@@ -9,7 +9,7 @@ public class Leibniz {
     }
 
     public static void main(String[] arg) throws InterruptedException {
-        int n = 15000;
+        final int n = 15000;
 
         Thread positiveThread = new Thread(new Runnable() {
             public void run() {

@@ -2,8 +2,16 @@ package com.java.training.models;
 
 import com.java.training.enums.OperationType;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class MathExpression {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private OperationType operationType;
     private Integer firstParam;
