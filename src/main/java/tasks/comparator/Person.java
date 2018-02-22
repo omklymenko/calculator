@@ -14,12 +14,12 @@ public class Person {
     private final String residence;
     private final int favouriteNumber;
 
-    public Person(String name, String surname, Date dateOfBirth, String residence, int favouriteNumber) {
-        this.name = name;
-        this.surname = surname;
-        this.dateOfBirth = dateOfBirth;
-        this.residence = residence;
-        this.favouriteNumber = favouriteNumber;
+    private Person(PersonBuilder builder) {
+        this.name = builder.nestedName;
+        this.surname = builder.nestedSurname;
+        this.dateOfBirth = builder.nestedDateOfBirth;
+        this.residence = builder.nestedResidence;
+        this.favouriteNumber = builder.nestedFavouriteNumber;
     }
 
     public String getName() {
@@ -40,6 +40,17 @@ public class Person {
 
     public int getFavouriteNumber() {
         return favouriteNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name = '" + name + '\'' +
+                ", surname = '" + surname + '\'' +
+                ", dateOfBirth = " + new SimpleDateFormat("dd/MM/yyyy").format(dateOfBirth) +
+                ", residence = '" + residence + '\'' +
+                ", favouriteNumber = " + favouriteNumber +
+                '}';
     }
 
     public static class PersonBuilder {
@@ -66,7 +77,7 @@ public class Person {
             try {
                 this.nestedDateOfBirth= formatter.parse(dateOfBirth);
             } catch (ParseException e) {
-                e.printStackTrace();
+                throw new IllegalArgumentException("Only dd/MM/yyyy is acceptable");
             }
             return this;
         }
@@ -87,7 +98,7 @@ public class Person {
 
         public Person build(){
             if(nestedName != null && nestedSurname != null && nestedDateOfBirth != null) {
-                return new Person(nestedName, nestedSurname, nestedDateOfBirth, nestedResidence, nestedFavouriteNumber);
+                return new Person(this);
             } else {
                 throw new IllegalArgumentException("Name, Surname and Date of Birth are required");
             }
@@ -99,6 +110,23 @@ public class Person {
         public int compare(Person p1, Person p2)
         {
             return p1.getName().compareTo(p2.getName());
+        }
+    }
+
+    static class SurnameComparator implements Comparator<Person> {
+        public int compare(Person p1, Person p2)
+        {
+            return p1.getSurname().compareTo(p2.getSurname());
+        }
+    }
+
+    static class PersonComparator implements Comparator<Person> {
+        public int compare(Person person1, Person person2) {
+            int c;
+            c = person1.getName().compareTo(person2.getName());
+            if (c == 0)
+                c = person1.getSurname().compareTo(person2.getSurname());
+            return c;
         }
     }
 
