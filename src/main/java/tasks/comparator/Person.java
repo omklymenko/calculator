@@ -102,4 +102,21 @@ public class Person {
         }
     }
 
+    static class SurnameComparator implements Comparator<Person> {
+        public int compare(Person p1, Person p2)
+        {
+            return p1.getSurname().compareTo(p2.getSurname());
+        }
+    }
+
+    static class PersonComparator implements Comparator<Person> {
+        public int compare(Person person1, Person person2) {
+            int c;
+            c = person1.getName().compareTo(person2.getName());
+            if (c == 0)
+                c = person1.getSurname().compareTo(person2.getSurname());
+            return c;
+        }
+    }
+
 }
