@@ -1,5 +1,7 @@
 package tasks.comparator;
 
+import org.apache.commons.lang.StringUtils;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -97,7 +99,7 @@ public class Person {
         }
 
         public Person build(){
-            if(nestedName != null && nestedSurname != null && nestedDateOfBirth != null) {
+            if(StringUtils.isNotBlank(nestedName) && StringUtils.isNotBlank(nestedSurname) && nestedDateOfBirth != null) {
                 return new Person(this);
             } else {
                 throw new IllegalArgumentException("Name, Surname and Date of Birth are required");
