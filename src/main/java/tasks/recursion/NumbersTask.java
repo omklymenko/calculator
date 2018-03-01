@@ -2,8 +2,6 @@ package tasks.recursion;
 
 public class NumbersTask {
 
-    private static int count;
-
     private static int recursion(int n) {
 
         System.out.println(n);
@@ -14,15 +12,12 @@ public class NumbersTask {
         return recursion(n - 1);
     }
 
-    private static int recursionReverse(int n) {
+    private static void recursionReverse(int n, int i) {
 
-        System.out.println(n - count);
-
-        count--;
-        if (count < 0) {
-            return 0;
+        System.out.println(i);
+        if (i < n) {
+            recursionReverse(n, i + 1);
         }
-        return recursionReverse(n);
     }
 
     public static void main(String[] args) {
@@ -30,7 +25,6 @@ public class NumbersTask {
 
         System.out.println("***************");
 
-        count = 5;
-        recursionReverse(5);
+        recursionReverse(5, 0);
     }
 }
